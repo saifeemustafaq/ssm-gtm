@@ -1,26 +1,90 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg transition-colors bg-amethyst text-white hover:bg-deep-amethyst;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg transition-colors bg-emerald text-white hover:bg-deep-emerald;
+  }
+
+  .card {
+    @apply glass-panel p-6;
+  }
+
+  .timeline-item {
+    @apply relative pl-8 border-l-2 border-ash;
+  }
+
+  .kpi-indicator {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .kpi-positive {
+    @apply bg-emerald/10 text-emerald;
+  }
+
+  .kpi-negative {
+    @apply bg-rose-quartz/10 text-rose-quartz;
+  }
+
+  .kpi-neutral {
+    @apply bg-icy-teal/10 text-icy-teal;
+  }
+
+  .glass-light {
+    @apply bg-white/10 backdrop-blur-sm;
+  }
+
+  .glass-medium {
+    @apply bg-white/15 backdrop-blur-md;
+  }
+
+  .glass-dark {
+    @apply bg-white/20 backdrop-blur-lg;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    @apply bg-obsidian text-fog font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  h1 {
+    @apply text-4xl leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl leading-tight;
+  }
+
+  h3 {
+    @apply text-2xl leading-tight;
+  }
+
+  a {
+    @apply text-amethyst hover:text-deep-amethyst transition-colors;
+  }
+}
+
+/* Dark mode is default for this theme */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-obsidian: #F9FAFB;
+    --color-graphite: #F1F5F9;
+    --color-slate: #E2E8F0;
+    --color-fog: #1E293B;
+    --color-ash: #64748B;
+  }
 }
